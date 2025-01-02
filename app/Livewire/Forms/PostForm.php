@@ -23,6 +23,12 @@ class PostForm extends Form
             $this->validate()
         );
 
+        // flash message session
+        // session()->flash('message', 'Post created successfully');
+
+        // flash message using livewire
+        flash('Post created successfully', 'success');
+
         $this->reset();
     }
 }
