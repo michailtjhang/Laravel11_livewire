@@ -17,12 +17,19 @@ class LoginForm extends Form
     public string $password = '';
     public function store()
     {
-        if (Auth::attempt($this->validate())) {
-            return redirect()->route('home');
+        try {
+            if (Auth::attempt($this->validate())) {
+                return redirect()->route('home');
+            }
+    
+            throw ValidationException::withMessages([
+                'email' => 'The provided credentials are incorrect.',
+            ]);
+        } catch (ValidationException $e) {
+            // Jika ingin pesan error lebih spesifik
+            $this->addError('email', $e->getMessage());
+            // Atau kirim error ke session untuk tampilan global
+            flash('Email or password is incorrect', 'danger');
         }
-        
-        throw ValidationException::withMessages([
-            'email' => 'The provided credentials are incorrect.',
-        ]);
     }
 }

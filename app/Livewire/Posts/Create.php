@@ -10,7 +10,9 @@ class Create extends Component
     public PostForm $form;
     public function save()
     {
-        $this->form->store();
+        $post = $this->form->store();
+
+        $this->dispatch('postCreated', $post);
     }
 
     public function render()

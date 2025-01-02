@@ -2,10 +2,14 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Login</h5>
+
+            <x-flash-message />
+
             <form wire:submit="login">
                 <div class="mb-4">
                     <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter email" wire:model="form.email">
+                    <input type="email" class="form-control" id="email" placeholder="Enter email"
+                        wire:model="form.email">
                     @error('form.email')
                         <small class="text-danger d-block mt-1">{{ $message }}</small>
                     @enderror

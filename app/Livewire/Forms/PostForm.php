@@ -10,16 +10,12 @@ use Livewire\Attributes\Validate;
 
 class PostForm extends Form
 {
-
-    #[Rule(['required', 'min:3'])]
-    public string $title = '';
-
     #[Rule(['required', 'max:1000'])]
     public string $body = '';
 
     public function store()
     {
-        Auth::user()->posts()->create(
+        $post = Auth::user()->posts()->create(
             $this->validate()
         );
 
@@ -30,5 +26,7 @@ class PostForm extends Form
         flash('Post created successfully', 'success');
 
         $this->reset();
+
+        return $post;
     }
 }
