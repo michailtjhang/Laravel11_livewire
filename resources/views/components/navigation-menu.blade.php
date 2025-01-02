@@ -12,7 +12,8 @@
                 <x-nav-link :active="request()->routeIs('home')" href="{{ route('home') }}">Home</x-nav-link>
                 <x-nav-link :active="request()->routeIs('about')" :href="route('about')">About</x-nav-link>
                 <x-nav-link :active="request()->routeIs('contact')" href="/contact">Contact</x-nav-link>
-                <x-nav-link :active="request()->routeIs('posts.*')" href="/posts">Posts</x-nav-link>
+                <x-nav-link :active="request()->routeIs('timeline')" href="/timeline">Timeline</x-nav-link>
+                {{-- <x-nav-link :active="request()->routeIs('posts.*')" href="/posts">Posts</x-nav-link> --}}
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 @auth
