@@ -27,8 +27,10 @@ class Index extends Component
     public function render()
     {
         sleep(3);
+        $posts = Post::query()->latest()->get();
+        
         return view('livewire.posts.index',[
-        'posts' => Post::query()->latest()->get(),
+        'posts' => $posts,
     ]);
     }
 }

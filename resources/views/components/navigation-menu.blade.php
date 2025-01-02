@@ -14,12 +14,13 @@
                 <x-nav-link :active="request()->routeIs('contact')" href="/contact">Contact</x-nav-link>
                 <x-nav-link :active="request()->routeIs('timeline')" href="/timeline">Timeline</x-nav-link>
                 {{-- <x-nav-link :active="request()->routeIs('posts.*')" href="/posts">Posts</x-nav-link> --}}
+                <x-nav-link :active="request()->routeIs('users.*')" href="/users">Users</x-nav-link>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 @auth
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
-                        <button class="btn btn-primary" type="submit">Logout</button>
+                        <button class="btn nav-link" type="submit">Logout</button>
                     </form>
                 @else
                     <x-nav-link href="/login">Log in</x-nav-link>
